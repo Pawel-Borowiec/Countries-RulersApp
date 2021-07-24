@@ -3,6 +3,8 @@ package pl.project.demo.models;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
+
 @ToString
 @EqualsAndHashCode
 @NoArgsConstructor
@@ -16,6 +18,8 @@ public class Ruler {
     private Integer id;
     private String name;
     private String dynasty;
-    private Integer reign_started;
-    private Integer reign_ended;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name ="ruler_Id", referencedColumnName = "id")
+    private List<RulesIn> rulersIn;
+
 }
