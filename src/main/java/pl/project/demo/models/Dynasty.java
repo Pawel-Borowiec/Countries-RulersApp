@@ -3,6 +3,8 @@ package pl.project.demo.models;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
+
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode
@@ -16,4 +18,6 @@ public class Dynasty {
     private Integer id;
     private String name;
     private String coat;
+    @OneToMany(targetEntity = Ruler.class , mappedBy = "dynasty", fetch = FetchType.LAZY)
+    private List<Ruler> dynastyMemberes;
 }

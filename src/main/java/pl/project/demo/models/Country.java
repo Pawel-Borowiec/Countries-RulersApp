@@ -1,5 +1,6 @@
 package pl.project.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -17,7 +18,7 @@ public class Country {
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name ="country_Id", referencedColumnName = "id")
-    private List<RulesIn> rulersIn;
+    @JsonIgnore
+    @OneToMany(targetEntity = Reign.class , mappedBy = "country", fetch = FetchType.LAZY)
+    private List<Reign> rulersIn;
 }
