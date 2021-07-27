@@ -3,6 +3,8 @@ package pl.project.demo.controllers;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pl.project.demo.dto.requests.RulerRequest;
+import pl.project.demo.dto.responses.RulerResponse;
 import pl.project.demo.models.Country;
 import pl.project.demo.models.Ruler;
 import pl.project.demo.service.CountryService;
@@ -18,19 +20,20 @@ public class RulerController {
     private RulerService rulerService;
 
     @GetMapping()
-    public List<Ruler> getRulers(){
+    public List<RulerResponse> getRulers(){
         return rulerService.getAllRulers();   }
     @GetMapping("/{id}")
-    public Ruler getRulerById(@PathVariable int id){
+    public RulerResponse getRulerById(@PathVariable int id){
         return rulerService.getRulerById(id);
     }
     @PostMapping()
-    public void addRuler(@RequestBody Ruler ruler){
-        rulerService.saveRuler(ruler);
+    public String addRuler(@RequestBody RulerRequest request){
+        rulerService.saveRuler(request);
+        return "Dodano władcę jakim jest: "+request.getName();
     }
     @PutMapping("/{id}")
-    public void updateCountry(@RequestBody Ruler ruler, @PathVariable int id){
-        rulerService.updateRuler(ruler, id);
+    public void updateCountry(@RequestBody RulerRequest request, @PathVariable int id){
+        rulerService.updateRuler(request, id);
     }
     @DeleteMapping("/{id}")
     public void deleteCountryById(@PathVariable int id){

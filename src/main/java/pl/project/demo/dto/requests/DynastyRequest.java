@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class RulerRequest {
+public class DynastyRequest {
     private String name;
-    private Integer dynastyId;
+    private String coat;
 }

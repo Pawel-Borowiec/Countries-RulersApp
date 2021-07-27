@@ -3,6 +3,8 @@ package pl.project.demo.controllers;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pl.project.demo.dto.requests.DynastyRequest;
+import pl.project.demo.dto.responses.DynastyResponse;
 import pl.project.demo.models.Country;
 import pl.project.demo.models.Dynasty;
 import pl.project.demo.service.CountryService;
@@ -17,7 +19,7 @@ public class DynastyController {
     private DynastyService dynastyService;
 
     @GetMapping()
-    public List<Dynasty> getDynasties(){
+    public List<DynastyResponse> getDynasties(){
         return dynastyService.getAllDynasties();
     }
 
@@ -27,13 +29,14 @@ public class DynastyController {
     }
 
     @PostMapping()
-    public void addDynasty(@RequestBody Dynasty dynasty){
-        dynastyService.saveDynasty(dynasty);
+    public String addDynasty(@RequestBody DynastyRequest request){
+        dynastyService.saveDynasty(request);
+        return "Dodano dystanią: "+request.getName();
     }
 
     @PutMapping("/{id}")
-    public void updateDynasty(@RequestBody Dynasty dynasty, @PathVariable int id){
-        dynastyService.updateDynasty(dynasty, id);
+    public void updateDynasty(@RequestBody DynastyRequest request, @PathVariable int id){
+        dynastyService.updateDynasty(request, id);
     }
     @DeleteMapping("/{id}")
     public void deleteDynastyById(@PathVariable int id){
