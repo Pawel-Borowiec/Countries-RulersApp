@@ -23,8 +23,9 @@ public class CountryController {
         return countryService.getCountryById(id);
     }
     @PostMapping()
-    public void addCountry(@RequestBody Country country){
+    public String addCountry(@RequestBody Country country){
         countryService.saveCountry(country);
+        return "Dodano kraj o nazwie: "+country.getName();
     }
     @PutMapping("/{id}")
     public void updateCountry(@RequestBody Country country, @PathVariable int id){

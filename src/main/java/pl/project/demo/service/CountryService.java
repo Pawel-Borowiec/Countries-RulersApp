@@ -22,7 +22,7 @@ public class CountryService {
         return countryRepository.findAll();
     }
     public Country getCountryById(int id){
-        return  countryRepository.findById(id).orElseThrow();
+        return  countryRepository.findById(id).get();
     }
     public void saveCountry(Country country){
         countryRepository.save(country);

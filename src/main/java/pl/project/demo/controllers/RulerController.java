@@ -15,7 +15,6 @@ import java.util.List;
 @RequestMapping("/rulers")
 public class RulerController {
 
-    @Autowired
     private RulerService rulerService;
 
     @GetMapping()

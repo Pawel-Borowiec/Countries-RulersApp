@@ -2,7 +2,6 @@ package pl.project.demo.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import pl.project.demo.dto.requests.DynastyAddRequest;
 import pl.project.demo.models.Country;
 import pl.project.demo.models.Dynasty;
 import pl.project.demo.repositories.CountryRepository;
@@ -20,7 +19,7 @@ public class DynastyService {
         return dynastyRepository.findAll();
     }
     public Dynasty getDynastyById(int id){
-        return  dynastyRepository.findById(id).orElseThrow();
+        return  dynastyRepository.findById(id).get();
     }
     public void saveDynasty(Dynasty dynasty){
         dynastyRepository.save(dynasty);

@@ -3,7 +3,6 @@ package pl.project.demo.controllers;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import pl.project.demo.dto.requests.DynastyAddRequest;
 import pl.project.demo.models.Country;
 import pl.project.demo.models.Dynasty;
 import pl.project.demo.service.CountryService;

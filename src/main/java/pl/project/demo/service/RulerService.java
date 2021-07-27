@@ -16,7 +16,7 @@ public class RulerService {
         return rulerRepository.findAll();
     }
     public Ruler getRulerById(int id){
-        return  rulerRepository.findById(id).orElseThrow();
+        return  rulerRepository.findById(id).get();
     }
     public void saveRuler(Ruler ruler){
         rulerRepository.save(ruler);
