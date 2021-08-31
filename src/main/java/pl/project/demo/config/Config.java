@@ -18,4 +18,6 @@ public class Config {
                 .paths(PathSelectors.regex("^(?!/(error).*$).*$"))
                 .build();
     }
+
+
 }
