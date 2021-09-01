@@ -19,7 +19,7 @@ https://countries-and-rulers-app.herokuapp.com/swagger-ui.html
 This app will keep data about rulers of european countries from medieval period and allow to see this data by endpoints. expected end date is end of the August 2021 so if you check this repository before end of august you will see incomplete project
 
 ### Current entity diagram of database
-![Screenshot1](images/databaseMode.png)
+![Screenshot1](images/databaseModel.png)
 
 ### Plans for project
 * Uploud application to heroku for online access
