@@ -18,11 +18,12 @@ public class Ruler {
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
+    private String portrait;
     @JsonIgnore
     @OneToMany(targetEntity = Reign.class , mappedBy = "ruler", fetch = FetchType.LAZY)
     private List<Reign> rulersIn;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="dynasty_id", nullable = false)
+    @JoinColumn(name="dynasty_id", nullable = true)
     private Dynasty dynasty;
 
 }
