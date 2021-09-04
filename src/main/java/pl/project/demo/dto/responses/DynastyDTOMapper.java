@@ -8,6 +8,7 @@ public class DynastyDTOMapper {
                 .id(dynasty.getId())
                 .name(dynasty.getName())
                 .coat(dynasty.getCoat())
+                .countryOfOrigin(dynasty.getCountryOfOrigin().getId())
                 .build();
     }
 }

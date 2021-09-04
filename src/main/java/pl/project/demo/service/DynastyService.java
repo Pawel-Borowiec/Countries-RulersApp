@@ -2,6 +2,7 @@ package pl.project.demo.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import pl.project.demo.controllers.CountryController;
 import pl.project.demo.dto.requests.DynastyRequest;
 import pl.project.demo.dto.responses.DynastyResponse;
 import pl.project.demo.models.Country;
@@ -35,6 +36,7 @@ public class DynastyService {
         Dynasty dynasty = new Dynasty();
         dynasty.setCoat(request.getCoat());
         dynasty.setName(request.getName());
+        dynasty.setCountryOfOrigin(countryRepository.getById(request.getCountryOfOrigin()));
         dynastyRepository.save(dynasty);
     }
     public void deleteDynasty(int id){
@@ -45,6 +47,7 @@ public class DynastyService {
         Dynasty temp = dynastyRepository.getById(id);
         temp.setName(request.getName());
         temp.setCoat(request.getCoat());
+        temp.setCountryOfOrigin(countryRepository.getById(request.getCountryOfOrigin()));
         dynastyRepository.save(temp);
     }
 }

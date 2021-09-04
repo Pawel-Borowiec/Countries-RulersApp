@@ -9,4 +9,5 @@ public class DynastyDTO {
     private Integer id;
     private String name;
     private String coat;
+    private Integer countryOfOrigin;
 }

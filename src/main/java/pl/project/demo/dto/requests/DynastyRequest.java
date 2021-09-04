@@ -8,4 +8,5 @@ import lombok.Setter;
 public class DynastyRequest {
     private String name;
     private String coat;
+    private Integer countryOfOrigin;
 }
