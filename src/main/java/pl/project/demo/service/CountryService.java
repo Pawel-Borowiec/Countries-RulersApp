@@ -15,19 +15,23 @@ import java.util.List;
 public class CountryService {
     private final CountryRepository countryRepository;
 
-    public String hello(){
+    public String hello() {
         return "Countries repository is working";
     }
-    public List<Country> getAllCountries(){
+
+    public List<Country> getAllCountries() {
         return countryRepository.findAll();
     }
-    public Country getCountryById(int id){
-        return  countryRepository.findById(id).get();
+
+    public Country getCountryById(int id) {
+        return countryRepository.findById(id).get();
     }
-    public void saveCountry(Country country){
+
+    public void saveCountry(Country country) {
         countryRepository.save(country);
     }
-    public void deleteCountry(int id){
+
+    public void deleteCountry(int id) {
         countryRepository.deleteById(id);
     }
 

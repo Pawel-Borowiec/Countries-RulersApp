@@ -19,7 +19,7 @@ public class ReignService {
     private final CountryRepository countryRepository;
     private final RulerRepository rulerRepository;
 
-    public List<ReignResponse> getAllReignsIn(){
+    public List<ReignResponse> getAllReignsIn() {
         return reignRepository.findAll()
                 .stream()
                 .map(reign -> ReignResponse
@@ -32,7 +32,8 @@ public class ReignService {
                         .build())
                 .collect(Collectors.toList());
     }
-    public void saveReign(ReignRequest request){
+
+    public void saveReign(ReignRequest request) {
         Reign reign = new Reign();
         reign.setCountry(countryRepository.getById(request.getCountryId()));
         reign.setRuler(rulerRepository.getById(request.getRulerId()));

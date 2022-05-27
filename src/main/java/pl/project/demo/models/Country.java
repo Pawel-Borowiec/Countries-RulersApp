@@ -15,14 +15,14 @@ import java.util.List;
 @Table(name = "country")
 public class Country {
     @Id
-    @GeneratedValue( strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String flag;
     @JsonIgnore
-    @OneToMany(targetEntity = Reign.class , mappedBy = "country", fetch = FetchType.LAZY)
+    @OneToMany(targetEntity = Reign.class, mappedBy = "country", fetch = FetchType.LAZY)
     private List<Reign> rulersIn;
     @JsonIgnore
-    @OneToMany(targetEntity = Dynasty.class , mappedBy = "countryOfOrigin", fetch = FetchType.LAZY)
+    @OneToMany(targetEntity = Dynasty.class, mappedBy = "countryOfOrigin", fetch = FetchType.LAZY)
     private List<Dynasty> nativeDynasties;
 }

@@ -14,14 +14,14 @@ import java.util.List;
 @Table(name = "dynasty")
 public class Dynasty {
     @Id
-    @GeneratedValue( strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String coat;
 
-    @OneToMany(targetEntity = Ruler.class , mappedBy = "dynasty", fetch = FetchType.LAZY)
+    @OneToMany(targetEntity = Ruler.class, mappedBy = "dynasty", fetch = FetchType.LAZY)
     private List<Ruler> dynastyMemberes;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="country_of_origin_id", nullable = false)
+    @JoinColumn(name = "country_of_origin_id", nullable = false)
     private Country countryOfOrigin;
 }

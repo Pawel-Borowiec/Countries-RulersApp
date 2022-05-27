@@ -2,10 +2,8 @@ package pl.project.demo.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import pl.project.demo.controllers.CountryController;
 import pl.project.demo.dto.requests.DynastyRequest;
 import pl.project.demo.dto.responses.DynastyResponse;
-import pl.project.demo.models.Country;
 import pl.project.demo.models.Dynasty;
 import pl.project.demo.repositories.CountryRepository;
 import pl.project.demo.repositories.DynastyRepository;
@@ -19,7 +17,7 @@ public class DynastyService {
     private final DynastyRepository dynastyRepository;
     private final CountryRepository countryRepository;
 
-    public List<DynastyResponse> getAllDynasties(){
+    public List<DynastyResponse> getAllDynasties() {
         return dynastyRepository.findAll().stream()
                 .map(dynasty -> DynastyResponse
                         .builder()
@@ -29,17 +27,20 @@ public class DynastyService {
                         .build())
                 .collect(Collectors.toList());
     }
-    public Dynasty getDynastyById(int id){
-        return  dynastyRepository.findById(id).get();
+
+    public Dynasty getDynastyById(int id) {
+        return dynastyRepository.findById(id).get();
     }
-    public void saveDynasty(DynastyRequest request){
+
+    public void saveDynasty(DynastyRequest request) {
         Dynasty dynasty = new Dynasty();
         dynasty.setCoat(request.getCoat());
         dynasty.setName(request.getName());
         dynasty.setCountryOfOrigin(countryRepository.getById(request.getCountryOfOrigin()));
         dynastyRepository.save(dynasty);
     }
-    public void deleteDynasty(int id){
+
+    public void deleteDynasty(int id) {
         dynastyRepository.deleteById(id);
     }
 

@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.project.demo.dto.requests.RulerRequest;
 import pl.project.demo.dto.responses.RulerResponse;
-import pl.project.demo.models.Country;
 import pl.project.demo.models.Ruler;
 import pl.project.demo.repositories.DynastyRepository;
 import pl.project.demo.repositories.RulerRepository;
@@ -17,7 +16,8 @@ import java.util.stream.Collectors;
 public class RulerService {
     private final RulerRepository rulerRepository;
     private final DynastyRepository dynastyRepository;
-    public List<RulerResponse> getAllRulers(){
+
+    public List<RulerResponse> getAllRulers() {
         return rulerRepository.findAll().stream()
                 .map(ruler -> RulerResponse
                         .builder()
@@ -27,22 +27,25 @@ public class RulerService {
                         .build())
                 .collect(Collectors.toList());
     }
-    public RulerResponse getRulerById(int id){
+
+    public RulerResponse getRulerById(int id) {
         Ruler ruler = rulerRepository.findById(id).get();
-        return  RulerResponse
+        return RulerResponse
                 .builder()
                 .name(ruler.getName())
                 .id(ruler.getId())
                 .dynastyName(ruler.getDynasty().getName())
                 .build();
     }
-    public void saveRuler(RulerRequest request){
+
+    public void saveRuler(RulerRequest request) {
         Ruler ruler = new Ruler();
         ruler.setName(request.getName());
         ruler.setDynasty(dynastyRepository.getById(request.getDynastyId()));
         rulerRepository.save(ruler);
     }
-    public void deleteRuler(int id){
+
+    public void deleteRuler(int id) {
         rulerRepository.deleteById(id);
     }
 

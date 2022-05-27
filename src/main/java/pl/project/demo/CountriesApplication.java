@@ -25,9 +25,9 @@ public class CountriesApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-       // List<Country> countryList = countryRepository.findAll();
+        // List<Country> countryList = countryRepository.findAll();
         //List<Ruler> rulerList = rulerRepository.findAll();
-       // countryList.forEach(System.out :: println);
-       // rulerList.forEach(System.out :: println);
+        // countryList.forEach(System.out :: println);
+        // rulerList.forEach(System.out :: println);
     }
 }
